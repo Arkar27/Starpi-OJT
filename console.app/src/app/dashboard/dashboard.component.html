@@ -1,0 +1,35 @@
+<div class="container-con">
+	<div class="header-con">
+		<h2>Dashboard</h2>
+	</div>
+	<div class="sub-con">
+
+		<div class="list-con">
+			<div class="example-button-row" [ngClass]="{'user': role == '0'}">
+				<button mat-raised-button color="primary" routerLink="/user_list" [disabled]="role == '0'">User
+					list</button>
+			</div>
+			<div class="example-button-row">
+				<button mat-raised-button color="primary" routerLink="/post_list">Post list</button>
+			</div>
+		</div>
+		<div class="list-con">
+			<div class="example-button-row" [ngClass]="{'user': role == '0'}">
+				<button mat-raised-button color="primary" routerLink="/create_user" [disabled]="role == '0'">Create
+					user</button>
+			</div>
+			<div class="example-button-row">
+				<button mat-raised-button color="primary" routerLink="/post_create">Create post</button>
+			</div>
+		</div>
+
+
+		<div class="list-con">
+			<div class="example-button-row">
+				<button mat-raised-button color="primary" routerLink="/csv_upload">Upload CSV</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+<!-- <p>Dashboard work</p> -->

@@ -1,0 +1,39 @@
+.container-con {
+  padding-top: 5%;
+  text-align: center;
+  width: 100%;
+  background: #d3d7ed;
+  height: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 10px;
+  width: 30%;
+  margin: 0 auto;
+  padding: 30px;
+
+}
+
+.login-title {
+  color: #3f51b5;
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 22px;
+  margin-bottom: 30px;
+
+}
+
+.btn-con {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+button {
+  padding: 8px 0;
+  width: 80%;
+  font-size: large;
+}

@@ -1,0 +1,145 @@
+<div class="container-con">
+	
+	<div class="mid-con">
+		<div class="left-con" *ngIf="url">
+			<div class="image-section"><img class="passport-image" [src]="url"></div>
+		</div>
+		<form [formGroup]="reactiveForm" class="example-form" #f="ngForm" enctype="multipart/form-data">
+			
+			<!-- formControlName="inputFile" -->
+			<h2 class="login-title">Create new member</h2>
+			<div>
+				<input #imageInput type="file" class="form-control" formControlName="inputFile"
+				accept="image/png, image/gif, image/jpeg" placeholder="Select images" (change)="onChangeImage($event)">
+			</div>
+
+
+			<mat-form-field class="example-full-width" appearance="fill">
+				<mat-label>Name</mat-label>
+				<input matInput placeholder="Your Name" name="name" id="name" formControlName="name"
+					[(ngModel)]="userName">
+				<mat-error *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="invalid-feedback">
+					<mat-error *ngIf="name?.errors?.['required']">
+						This field is required.
+					</mat-error>
+				</mat-error>
+			</mat-form-field>
+			<mat-form-field class="example-full-width" appearance="fill">
+				<mat-label>Email</mat-label>
+				<input matInput placeholder="yourname@gmail.com" name="email" id="email" formControlName="email"
+					[(ngModel)]="mail">
+				<mat-error *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
+					<mat-error *ngIf="email.errors?.['required']">
+						This field is required.
+					</mat-error>
+					<mat-error *ngIf="email.errors?.['pattern']">
+						This is not email.
+					</mat-error>
+				</mat-error>
+			</mat-form-field>
+			<mat-divider></mat-divider>
+			<mat-form-field class="example-full-width" appearance="fill">
+				<mat-label>Password</mat-label>
+				<input matInput placeholder="Password" name="password" id="password" required formControlName="password"
+					pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" minlength="6" maxlength="30" type="password"
+					[type]="hide ? 'password' : 'text'" [(ngModel)]="pw">
+				<button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+					[attr.aria-pressed]="hide">
+					<mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+				</button>
+				<mat-error *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="invalid-feedback">
+					<mat-error *ngIf="password?.errors?.['required']">
+						This field is required.
+					</mat-error>
+					<mat-error *ngIf="password?.errors?.['pattern']">
+						Need 1 upper case and 1 numeric characters.
+					</mat-error>
+					<mat-error *ngIf="password?.errors?.['minLength']">
+						Need 6 characters at least.
+					</mat-error>
+					<mat-error *ngIf="password?.errors?.['maxLength']">
+						Please insert less than 30 characters.
+					</mat-error>
+				</mat-error>
+			</mat-form-field>
+			<mat-form-field class="example-full-width" appearance="fill">
+				<mat-label>Confirm Password</mat-label>
+				<input matInput placeholder="Password" name="password"
+					pattern="{{reactiveForm.controls['password'].value}}" formControlName="confirmPassword" required
+					type="password" [(ngModel)]="conPw">
+				<mat-error *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)"
+					class="invalid-feedback">
+					<mat-error *ngIf="confirmPassword?.errors?.['required']">
+						This field is required.
+					</mat-error>
+					<mat-error *ngIf="confirmPassword?.errors?.['pattern']">
+						Password and confirm password is not match.
+					</mat-error>
+
+				</mat-error>
+			</mat-form-field>
+			<mat-form-field appearance="fill">
+				<mat-label>Type</mat-label>
+				<select matNativeControl formControlName="type">
+					<option value="0">User</option>
+					<option value="1">Admin</option>
+				</select>
+				<mat-error *ngIf="type?.invalid && (type?.dirty || type?.touched)" class="invalid-feedback">
+					<mat-error *ngIf="type?.errors?.['required']">
+						This field is required.
+					</mat-error>
+
+
+				</mat-error>
+			</mat-form-field>
+
+			<mat-form-field appearance="fill" class="calender">
+				<mat-label>Choose a date</mat-label>
+				<input matInput [matDatepicker]="picker" max="{{todayDate}}" name="date" id="date"
+					formControlName="date" required [class.is-invalid]="date?.invalid && (date?.dirty || date?.touched)"
+					placeholder="mm/dd/yyyy">
+				<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+				<mat-datepicker #picker></mat-datepicker>
+				<mat-error *ngIf="date?.invalid && (date?.dirty || date?.touched)" class="invalid-feedback">
+					<mat-error *ngIf="date?.errors?.['required']">
+						Please insert a date.
+					</mat-error>
+					<mat-error *ngIf="date?.errors?.['matDatepickerMax']">
+						Date is greater than today.
+					</mat-error>
+				</mat-error>
+				<!--<div>{{date?.errors?.['max']}}</div>-->
+
+			</mat-form-field>
+			<mat-form-field class="example-full-width" appearance="fill">
+				<mat-label>Phone</mat-label>
+				<input matInput placeholder="09xxxxxxxxx" name="phone" id="phone" formControlName="phone" minlength="11"
+					maxlength="11">
+				<mat-error *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)" class="invalid-feedback">
+					<mat-error *ngIf="phone?.errors?.['required']">
+						This field is required.
+					</mat-error>
+					<mat-error *ngIf="phone?.errors?.['minlength'] ">
+						Please insert 11 digits.
+					</mat-error>
+
+				</mat-error>
+			</mat-form-field>
+			<mat-form-field class="example-full-width" appearance="fill">
+				<mat-label>Address</mat-label>
+
+				<textarea matInput cols="30" rows="5" placeholder="Address" name="address" id="address"
+					formControlName="address" maxlength="250"></textarea>
+				<mat-error *ngIf="address?.invalid && (address?.dirty || address?.touched)" class="invalid-feedback">
+					<mat-error *ngIf="address?.errors?.['required']">
+						This field is required.
+					</mat-error>
+				</mat-error>
+			</mat-form-field>
+			<div class="example-button-row">
+				<button mat-raised-button color="primary" type="submit"
+					[disabled]="reactiveForm.invalid && !isGoodResolution " (click)="toConfirm()">Confirm</button>
+			</div>
+		</form>
+	</div>
+</div>

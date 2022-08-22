@@ -1,0 +1,40 @@
+.container-con {
+	padding-top: 5%;
+	text-align: center;
+	background: #d3d7ed;
+	width: 100%;
+	height: 100%;
+
+
+}
+
+.file-con {
+	width: 30%;
+	margin: 0 auto;
+	border-radius: 10px;
+	background: #fff;
+	display: flex;
+	flex-direction: column;
+	padding: 30px;
+
+}
+
+.login-title {
+	color: #3f51b5;
+	font-size: 30px;
+	font-weight: bold;
+	margin-top: 22px;
+	margin-bottom: 30px;
+
+}
+
+button {
+	padding: 8px 0;
+	width: 80%;
+	font-size: large;
+	margin: 0 auto;
+}
+
+input {
+	margin-bottom: 20px;
+}

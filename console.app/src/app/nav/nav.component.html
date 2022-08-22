@@ -1,0 +1,26 @@
+<div class="navbar" *ngIf="isLoginPage$ | async as isLoginPage">
+  <mat-toolbar color="primary">
+
+    <h1><a routerLink="/dashboard" class="login-title"><span>SCM Bulletin Board</span></a></h1>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <a routerLink="/dashboard" class="logo-title"><span>Home</span></a>
+
+    </button>
+    <button routerLink="/user_list" mat-icon-button class="example-icon favorite-icon"
+      aria-label="Example icon-button with heart icon" [ngClass]="{'user': role == '0'}" [disabled]="!isAdmin">
+      Users
+    </button>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <a routerLink="/post_list" class="logo-title"><span>Posts</span></a>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon"
+      (click)="editProfile()">
+      <span>Profile</span>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <a mat-raised-button (click)="onLogout()" color="warn" *ngIf="isLoginPage$ | async as isLoginPage">LOGOUT</a>
+    </button>
+
+  </mat-toolbar>
+</div>

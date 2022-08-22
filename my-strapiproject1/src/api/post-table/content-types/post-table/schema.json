@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "post_tables",
+  "info": {
+    "singularName": "post-table",
+    "pluralName": "post-tables",
+    "displayName": "post_table",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "unique": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "status": {
+      "type": "boolean",
+      "default": true,
+      "required": false
+    },
+    "createUserId": {
+      "type": "integer",
+      "required": true
+    }
+  }
+}

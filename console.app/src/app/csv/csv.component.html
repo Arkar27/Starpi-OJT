@@ -1,0 +1,7 @@
+<div class="container-con">
+    <h2 class="login-title">Upload CSV file</h2>
+    <div class="file-con">
+        <input type="file" name="file" (change)="onChange($event)" accept="file/csv" class="form-control">
+        <button mat-raised-button color="primary" (click)="onUpload()">Upload</button>
+    </div>
+</div>
